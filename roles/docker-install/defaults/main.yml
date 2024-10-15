@@ -20,7 +20,7 @@ docker_compose_package: docker-compose-plugin
 docker_compose_package_state: present
 
 # Portainer options.
-docker_install_portainer: true
+docker_install_portainer: false
 
 # Docker Compose options.
 docker_install_compose: true
