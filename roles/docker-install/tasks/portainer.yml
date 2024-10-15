@@ -1,0 +1,22 @@
+---
+- name: install pip3
+  apt: name=python3-pip state=present  
+
+- name: Install python packages
+  #pip:
+  apt: name=python3-docker state=present
+    #name: docker
+    
+- name: Create portainer container
+  docker_container:
+    name: portainer
+    image: portainer/portainer-ce:latest
+    state: started
+    recreate: yes
+    restart_policy: always
+    published_ports:
+      - "8000:8000"
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
